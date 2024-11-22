@@ -337,4 +337,28 @@ type (
 		} `json:"MsgSeqList"` // 撤回的消息列表
 		TopicId string `json:"TopicId"` // 撤回的话题ID
 	}
+
+	// AfterGroupMessageRead 群消息已读
+	AfterGroupMessageRead struct {
+		GroupId             string `json:"GroupId"` // 群ID
+		Type                string `json:"Type"`    // 群组类型
+		GroupMsgReceiptList struct {
+			MsgSeq             int `json:"MsgSeq"`    // 消息序列号
+			ReadNum            int `json:"ReadNum"`   // 消息已读数量
+			UnreadNum          int `json:"UnreadNum"` // 消息未读数量
+			ReadReceiptMembers []struct {
+				MemberAccount string `json:"Member_Account"` // 已读成员
+			} `json:"ReadReceiptMembers"` // 已读成员列表
+		}
+	}
+
+	// AfterGroupChangeOwner 群主变更之后回调
+	AfterGroupChangeOwner struct {
+		CallbackCommand string `json:"CallbackCommand"`
+		GroupId         string `json:"GroupId"`          // 群ID
+		Type            string `json:"Type"`             // 群组类型
+		OperatorAccount string `json:"Operator_Account"` // 操作者
+		OldOwnerAccount string `json:"OldOwner_Account"` // 原群主
+		NewOwnerAccount string `json:"NewOwner_Account"` // 新群主
+	}
 )

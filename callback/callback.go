@@ -40,6 +40,8 @@ const (
 	commandAfterGroupDestroyed       = "Group.CallbackAfterGroupDestroyed"
 	commandAfterGroupInfoChanged     = "Group.CallbackAfterGroupInfoChanged"
 	commandAfterGroupMessageRevoke   = "Group.CallbackAfterRecallMsg"
+	commandAfterGroupMessageRead     = "Group.CallbackAfterReadReceipt"
+	commandAfterGroupChangeOwner     = "Group.CallbackAfterChangeGroupOwner"
 )
 
 const (
@@ -66,6 +68,8 @@ const (
 	EventAfterGroupDestroyed
 	EventAfterGroupInfoChanged
 	EventAfterGroupMessageRevoke
+	EventAfterGroupMessageRead
+	EventAfterGroupChangeOwner
 )
 
 const (
@@ -237,6 +241,12 @@ func (c *callback) parseCommand(command string, body []byte) (event Event, data 
 	case commandAfterGroupMessageRevoke:
 		event = EventAfterGroupMessageRevoke
 		data = &AfterGroupMessageRevoke{}
+	case commandAfterGroupMessageRead:
+		event = EventAfterGroupMessageRead
+		data = &AfterGroupMessageRead{}
+	case commandAfterGroupChangeOwner:
+		event = EventAfterGroupChangeOwner
+		data = &AfterGroupChangeOwner{}
 	default:
 		return 0, nil, errors.New("invalid callback command")
 	}
