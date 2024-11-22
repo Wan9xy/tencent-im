@@ -325,4 +325,16 @@ type (
 		Introduction    string `json:"Introduction"`     // 修改后的群简介
 		FaceUrl         string `json:"FaceUrl"`          // 修改后的群头像
 	}
+
+	// AfterGroupMessageRevoke 群消息撤回
+	AfterGroupMessageRevoke struct {
+		CallbackCommand string `json:"CallbackCommand"`  // 回调命令
+		OperatorUserId  string `json:"Operator_Account"` // 请求的发起者
+		Type            string `json:"Type"`             // 群组类型
+		GroupId         string `json:"GroupId"`          // 群ID
+		MsgSeqList      []struct {
+			MsgSeq int `json:"MsgSeq"` // 消息序列号
+		} `json:"MsgSeqList"` // 撤回的消息列表
+		TopicId string `json:"TopicId"` // 撤回的话题ID
+	}
 )
