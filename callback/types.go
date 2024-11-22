@@ -303,11 +303,12 @@ type (
 
 	// AfterGroupDestroyed 群组解散之后回调
 	AfterGroupDestroyed struct {
-		CallbackCommand string `json:"CallbackCommand"` // 回调命令
-		GroupId         string `json:"GroupId"`         // 群ID
-		Type            string `json:"Type"`            // 群组类型
-		Name            string `json:"Name"`            // 群组名称
-		OwnerUserId     string `json:"Owner_Account"`   // 操作者
+		CallbackCommand string `json:"CallbackCommand"`  // 回调命令
+		OperatorUserId  string `json:"Operator_Account"` // 操作者
+		GroupId         string `json:"GroupId"`          // 群ID
+		Type            string `json:"Type"`             // 群组类型
+		Name            string `json:"Name"`             // 群组名称
+		OwnerUserId     string `json:"Owner_Account"`    // 群主
 		MemberList      []struct {
 			UserId string `json:"Member_Account"` // 成员 UserID
 		} `json:"MemberList"` // 被解散的群组中的成员
