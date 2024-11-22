@@ -342,7 +342,7 @@ type (
 	AfterGroupMessageRead struct {
 		GroupId             string `json:"GroupId"` // 群ID
 		Type                string `json:"Type"`    // 群组类型
-		GroupMsgReceiptList struct {
+		GroupMsgReceiptList []struct {
 			MsgSeq             int `json:"MsgSeq"`    // 消息序列号
 			ReadNum            int `json:"ReadNum"`   // 消息已读数量
 			UnreadNum          int `json:"UnreadNum"` // 消息未读数量
